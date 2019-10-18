@@ -11,20 +11,19 @@ import {
 // PACKAGES
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import ReloadIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Input, Button} from 'galio-framework';
+import {Button} from 'galio-framework';
 
 // FILES
 import styles from './style';
 import Banner from '../../../assets/banners/banner1.png';
 import Logo from '../../../assets/banners/logo.png';
-import {Colors} from '../../Constant/color';
 
 // CONSTANT
-const {appColor, appFont} = Colors;
 
 export default class PhoneVerification extends Component {
   state = {
@@ -64,17 +63,29 @@ export default class PhoneVerification extends Component {
               }}
             />
 
+
             <TouchableOpacity
               onPress={() => alert('Resending Code')}
               style={styles.btnStyle}>
-              <ReloadIcon name="reload" size={22} color={appColor} />
-              <Text style={{color: appColor, fontFamily: 'Nunito-ExtraBold'}}>
+              <ReloadIcon name="reload" size={22} color={"gray"} />
+              <Text style={{color: "gray", fontFamily: 'Nunito-ExtraBold'}}>
                 Resend
               </Text>
             </TouchableOpacity>
-            <Button color="#50C7C7" shadowless>
+            <LinearGradient
+                colors={['#c775b0', '#5058a6']}
+                start={{x: 0.2, y: 0.2}}
+                end={{x: 0.6, y: 0.1}}
+                style={{
+                  height: hp('7%'),
+                  width: wp('85%'),
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+            <Button color="transparent" shadowless>
               NEXT
             </Button>
+            </LinearGradient>
             {/* </View> */}
           </View>
         </ScrollView>

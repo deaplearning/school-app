@@ -26,7 +26,7 @@ export default styles = StyleSheet.create({
   inputText: {fontSize: hp('3%'), color: '#c775b0'},
   googleBtnContainer: {
     width: '85%',
-    height: '7%',
+    height: '8%',
     borderRadius: 5,
     backgroundColor: 'white',
     flexDirection: 'row',
@@ -42,4 +42,5 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
   },
   googleBtnSubContainer: {width: 30, height: '6%', justifyContent: 'center'},
+
 });

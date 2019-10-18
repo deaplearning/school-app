@@ -6,12 +6,6 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-//FILES
-// import { Colors } from "../../constant/color";
-
-// CONSTANT
-const {width, height} = Dimensions.get('window');
-
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -30,7 +24,6 @@ export default styles = StyleSheet.create({
   borderStyleHighLighted: {
     borderColor: 'black',
   },
-
   underlineStyleBase: {
     width: 30,
     height: 45,

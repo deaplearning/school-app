@@ -15,6 +15,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {Input, Button} from 'galio-framework';
+import LinearGradient from 'react-native-linear-gradient';
 
 // FILES
 import styles from './style';
@@ -49,12 +50,23 @@ export default class AddPhoneNumber extends Component {
                 placeholder="Phone Number"
                 bgColor="#e3e6e4"
                 borderless={true}
-                keyboardType='numeric'
-                style={{width: '90%'}}
+                keyboardType="numeric"
+                style={{width: wp('85%')}}
               />
-              <Button color="#50C7C7" shadowless>
-                NEXT
-              </Button>
+              <LinearGradient
+                colors={['#c775b0', '#5058a6']}
+                start={{x: 0.2, y: 0.2}}
+                end={{x: 0.6, y: 0.1}}
+                style={{
+                  height: hp('7%'),
+                  width: wp('85%'),
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Button color="transparent" shadowless>
+                  NEXT
+                </Button>
+              </LinearGradient>
               <View
                 style={{
                   justifyContent: 'space-between',
