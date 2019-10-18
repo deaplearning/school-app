@@ -1,148 +1,91 @@
-import React, { Component } from 'react';
-import { View, Button, Text, TextInput, Image } from 'react-native';
+import React, {Component} from 'react';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+  Image,
+} from 'react-native';
 
-import firebase from 'react-native-firebase';
+// PACKAGES
+import GoogleIcon from 'react-native-vector-icons/AntDesign';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import {Input, Button} from 'galio-framework';
 
-const successImageUri = 'https://cdn.pixabay.com/photo/2015/06/09/16/12/icon-803718_1280.png';
+// FILES
+import styles from './style';
+import Banner from '../../../assets/banners/banner1.png';
+import Logo from '../../../assets/banners/logo.png';
+import {Colors} from '../../Constant/color';
 
-export default class PhoneAuthTest extends Component {
-  constructor(props) {
-    super(props);
-    this.unsubscribe = null;
-    this.state = {
-      user: null,
-      message: '',
-      codeInput: '',
-      phoneNumber: '+92 ',
-      confirmResult: null,
-    };
-  }
+// CONSTANT
+const {appColor, appFont} = Colors;
 
-  componentDidMount() {
-    this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user: user.toJSON() });
-      } else {
-        // User has been signed out, reset the state
-        this.setState({
-          user: null,
-          message: '',
-          codeInput: '',
-          phoneNumber: '+92 ',
-          confirmResult: null,
-        });
-      }
-    });
-  }
-
-  componentWillUnmount() {
-     if (this.unsubscribe) this.unsubscribe();
-  }
-
-  signIn = () => {
-    const { phoneNumber } = this.state;
-    this.setState({ message: 'Sending code ...' });
-
-    alert(phoneNumber)
-
-    firebase.auth().signInWithPhoneNumber(phoneNumber)
-      .then(confirmResult => this.setState({ confirmResult, message: 'Code has been sent!' }))
-      .catch(error => this.setState({ message: `Sign In With Phone Number Error: ${error.message}` }));
+export default class AddPhoneNumber extends Component {
+  state = {
+    code: '',
   };
-
-  confirmCode = () => {
-    const { codeInput, confirmResult } = this.state;
-
-    if (confirmResult && codeInput.length) {
-      confirmResult.confirm(codeInput)
-        .then((user) => {
-          this.setState({ message: 'Code Confirmed!' });
-        })
-        .catch(error => this.setState({ message: `Code Confirm Error: ${error.message}` }));
-    }
-  };
-
-  signOut = () => {
-    firebase.auth().signOut();
-  }
-
-  renderPhoneNumberInput() {
-   const { phoneNumber } = this.state;
-
-    return (
-      <View style={{ padding: 25 }}>
-        <Text>Enter phone number:</Text>
-        <TextInput
-          autoFocus
-          style={{ height: 40, marginTop: 15, marginBottom: 15 }}
-          onChangeText={value => this.setState({ phoneNumber: value })}
-          placeholder={'Phone number ... '}
-          value={phoneNumber}
-        />
-        <Button title="Sign In" color="green" 
-        // onPress={this.signIn} 
-          onPress={() => this.props.navigation.navigate("Home")}
-        />
-      </View>
-    );
-  }
-
-  renderMessage() {
-    const { message } = this.state;
-
-    if (!message.length) return null;
-
-    return (
-      <Text style={{ padding: 5, backgroundColor: '#000', color: '#fff' }}>{message}</Text>
-    );
-  }
-
-  renderVerificationCodeInput() {
-    const { codeInput } = this.state;
-
-    return (
-      <View style={{ marginTop: 25, padding: 25 }}>
-        <Text>Enter verification code below:</Text>
-        <TextInput
-          autoFocus
-          style={{ height: 40, marginTop: 15, marginBottom: 15 }}
-          onChangeText={value => this.setState({ codeInput: value })}
-          placeholder={'Code ... '}
-          value={codeInput}
-        />
-        <Button title="Confirm Code" color="#841584" onPress={this.confirmCode} />
-      </View>
-    );
-  }
 
   render() {
-    const { user, confirmResult } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <ImageBackground style={styles.container} source={Banner}>
+        <ScrollView>
+          <View style={styles.childContainer}>
+            <View>
+              <Image
+                source={Logo}
+                style={styles.logoStyle}
+                resizeMode={'contain'}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputText}>Enter Your Phone Number</Text>
 
-        {!user && !confirmResult && this.renderPhoneNumberInput()}
+              <Input
+                placeholder="Phone Number"
+                bgColor="#e3e6e4"
+                borderless={true}
+                keyboardType='numeric'
+                style={{width: '90%'}}
+              />
+              <Button color="#50C7C7" shadowless>
+                NEXT
+              </Button>
+              <View
+                style={{
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  alignSelf: 'stretch',
+                  marginTop: 10,
+                }}>
+                <View>
+                  <Text>Have an account?</Text>
+                </View>
 
-        {this.renderMessage()}
-
-        {!user && confirmResult && this.renderVerificationCodeInput()}
-
-        {user && (
-          <View
-            style={{
-              padding: 15,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#77dd77',
-              flex: 1,
-            }}
-          >
-            <Image source={{ uri: successImageUri }} style={{ width: 100, height: 100, marginBottom: 25 }} />
-            <Text style={{ fontSize: 25 }}>Signed In!</Text>
-            <Text>{JSON.stringify(user)}</Text>
-            <Button title="Sign Out" color="red" onPress={this.signOut} />
+                <TouchableOpacity>
+                  <Text style={{color: '#c775b0'}}>Login</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <TouchableOpacity style={styles.googleBtnContainer}>
+              <View style={styles.googleBtnSubContainer}>
+                <View
+                  style={{
+                    borderRightWidth: 2,
+                    borderColor: '#e3e6e4',
+                  }}>
+                  <GoogleIcon name="google" color="red" size={18} />
+                </View>
+              </View>
+              <Text style={{color: 'red'}}>Sign Up With Google</Text>
+            </TouchableOpacity>
           </View>
-        )}
-      </View>
+        </ScrollView>
+      </ImageBackground>
     );
   }
 }
