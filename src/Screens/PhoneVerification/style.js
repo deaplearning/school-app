@@ -11,22 +11,17 @@ import {
 
 // CONSTANT
 const { width, height } = Dimensions.get("window");
-// const { buttonColor } = colors;
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: hp("10%"),
-    alignItems: "center",
-    justifyContent: "center"
   },
-  btnStyle: { marginLeft: wp("2%"), alignSelf: "center" },
+  btnStyle: { marginLeft: wp("2%"), alignSelf: "center", flexDirection: "row" },
 
   borderStyleBase: {
     width: 30,
-    height: 30
+    height: 30,
   },
-
   borderStyleHighLighted: {
     borderColor: "black"
   },
@@ -34,9 +29,9 @@ export default styles = StyleSheet.create({
   underlineStyleBase: {
     width: 30,
     height: 45,
-    borderWidth: 0,
-    borderBottomWidth: 1,
-    borderColor: "black"
+    borderWidth: 1,
+    borderColor: "#C1C1C1",
+    backgroundColor: "#e3e6e4"
   },
 
   underlineStyleHighLighted: {
