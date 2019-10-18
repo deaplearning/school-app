@@ -29,6 +29,9 @@ target 'SchoolApp' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
+
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+
   target 'SchoolAppTests' do
     inherit! :search_paths
     # Pods for testing
