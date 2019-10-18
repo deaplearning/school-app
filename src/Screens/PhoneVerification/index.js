@@ -32,22 +32,17 @@ export default class PhoneVerification extends Component {
   };
 
   render() {
-    const {container, btnStyle} = styles;
 
     return (
-      <ImageBackground style={container} source={Banner}>
+      <ImageBackground style={styles.container} source={Banner}>
         <ScrollView>
           <View
-            style={{
-              height: hp('90%'),
-              alignItems: 'center',
-              justifyContent: 'space-evenly',
-            }}>
+            style={styles.subContainer}>
             <View>
               <Image
                 source={Logo}
-                style={{width: 100, height: 80}}
-                resizeMode={'stretch'}
+                style={styles.logoStyling}
+                resizeMode={'contain'}
               />
             </View>
             {/* <View style={{justifyContent: 'center', alignItems: 'center'}}> */}
@@ -71,7 +66,7 @@ export default class PhoneVerification extends Component {
 
             <TouchableOpacity
               onPress={() => alert('Resending Code')}
-              style={btnStyle}>
+              style={styles.btnStyle}>
               <ReloadIcon name="reload" size={22} color={appColor} />
               <Text style={{color: appColor, fontFamily: 'Nunito-ExtraBold'}}>
                 Resend
