@@ -1,0 +1,12 @@
+export const Colors = {
+  appColor: '#00BCD4',
+  appColor2:'#6363FF',
+  black: '#1a1917',
+  gray: '#888888',
+  grayText:'#898989',
+  background1: '#B721FF',
+  background2: '#21D4FD',
+  appFont: 'LexendDeca-Regular',
+  appColor2:'#6363FF',
+  grayText:'#898989'
+};
