@@ -7,7 +7,7 @@ import { BooksCorner } from "../../Screens/DrawerScreens/BooksCorner";
 
 export const StackNav = createStackNavigator(
   {
-    Splash: Screens.Splash,
+    Splash: Screens.Notification,
     Login: Screens.Login,
     SignUp: Screens.SignUp,
     Dashboard: Screens.Dashboard,
