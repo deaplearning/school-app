@@ -1,180 +1,146 @@
 import React, {Component} from 'react';
+import {Text, View, Image, ImageBackground, TextInput} from 'react-native';
+
+// FILES
+import Banner from '../../../assets/banners/background.png';
+import Logo from '../../../assets/banners/logo.png';
 import styles from './style';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Picker,
-  Button,
-  TouchableHighlight,
-  StatusBar,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-
-
 
 // PACKAGES
-import Reinput from 'reinput';
+import {Item, Picker} from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import LinearGradient from 'react-native-linear-gradient';
+import { Button} from 'galio-framework';
 
-import PhoneNumberPicker from "react-native-country-code-telephone-input";
+export default class SignUp extends Component {
+  constructor() {
+    super();
 
-import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator,
-} from 'react-native-indicators';
+    this.state = {
+      FullName: '',
+      class: '',
+      sections: '',
+    };
+  }
 
-// FILES
-import {Colors} from '../../Constant/color';
+  on_singUp = () => {
+    console.log('Full name', this.state.FullName);
+    console.log('Classes', this.state.class);
+    console.log('Section', this.state.sections);
 
-const {appFont} = Colors;
-
-export default class SignUP extends Component {
-
-
-  PhoneNumberPickerChanged(country, callingCode, phoneNumber) {
     this.setState({
-      countryName: country.name,
-      callingCode: callingCode,
-      phoneNo: phoneNumber
+      FullName: '',
+      sections: '',
+      class: '',
     });
-  }
-
-  state = {value: ''};
-
-  updateValue = value => {
-    this.setState({value: value});
-  };
-
-  state = {value: '', defaultLoading: false};
-
-  componentWillUnmount() {
-    this.setState({defaultLoading: false});
-  }
-
-  loginUser = () => {
-    this.setState({defaultLoading: true});
-    setTimeout(() => {
-      this.props.navigation.navigate('Home');
-    }, 1000);
   };
 
   render() {
-    const {defaultLoading} = this.state;
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="white" />
-
-        <View style={styles.headContainer}>
-          <Text style={styles.headText}>Access</Text>
-
-          <Text style={styles.headDownText}> 5000+ Engaging Videos</Text>
+      <ImageBackground source={Banner} style={styles.container}>
+        <View style={{alignSelf: 'center', flex: 0.5}}>
+          <Image
+            source={Logo}
+            style={styles.LogoStyling}
+            resizeMode="contain"
+          />
         </View>
 
-        <View style={styles.InputsContainer}>
-          <Reinput
-            underlineColor="#898989"
-            labelActiveColor="#00BCD4"
-            labelColor="#898989"
-            underlineActiveColor="#00BCD4"
-            label="Name"
-            style={[{fontFamily: appFont}, styles.nameInput]}
-          />
-
-          <View
-            //Container for picker and number input
-            style={{
-              width: wp('95%'),
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              height: hp('12%'),
-              borderColor: '#898989',
-              marginTop: hp('2%'),
-              //backgroundColor:"blue",
-              alignItems:"center",
-              marginLeft:wp("9%")
-              
-              
+        <Text style={styles.Text}>Enter Your Personal Information</Text>
+        <TextInput
+          onChangeText={e => {
+            this.setState({FullName: e});
+          }}
+          placeholder="Full Name"
+          borderless
+          placeholderTextColor="#9a9a9a"
+          keyboardType="numeric"
+          style={styles.InputText}
+          clearButtonMode="always"
+          value={this.state.FullName}
+        />
+        <View style={{flex: 0.05}} />
+        <Item
+          picker
+          style={{
+            width: wp('77%'),
+            height: hp('6%'),
+            alignSelf: 'center',
+            backgroundColor: '#f2f2f2',
+            borderRadius: 8,
+            paddingLeft: 20,
+          }}>
+          <Picker
+            placeholder="Select your Class"
+            placeholderStyle={{color: '#bfc6ea'}}
+            placeholderIconColor="#007aff"
+            mode="dropdown"
+            style={{width: undefined}}
+            selectedValue={this.state.class}
+            value={this.state.class}
+            onValueChange={(e, itemIndex) => {
+              this.setState({class: e});
+            }}
+            placeholder="Select your SIM">
+            <Picker.Item label="Wallet" value="key0" />
+            <Picker.Item label="ATM Card" value="key1" />
+            <Picker.Item label="Debit Card" value="key2" />
+            <Picker.Item label="Credit Card" value="key3" />
+            <Picker.Item label="Net Banking" value="key4" />
+          </Picker>
+        </Item>
+        <View style={{flex: 0.05}} />
+        <Item
+          picker
+          style={{
+            width: wp('77%'),
+            height: hp('6%'),
+            alignSelf: 'center',
+            backgroundColor: '#f2f2f2',
+            borderRadius: 8,
+            color: '#8974f5',
+            paddingLeft: 20,
+          }}>
+          <Picker
+            placeholder="Select your Section"
+            placeholderStyle={{color: '#bfc6ea'}}
+            placeholderIconColor="#007aff"
+            mode="dropdown"
+            style={{width: undefined}}
+            selectedValue={this.state.sections}
+            value={this.state.sections}
+            onValueChange={(e, itemIndex) => {
+              this.setState({sections: e});
             }}>
-             <PhoneNumberPicker 
-              countryHint={{ name: "Pakistan", cca2: "PK", callingCode: "92" }}
-              onChange={this.PhoneNumberPickerChanged.bind(this)}
-            />
-          </View>
-          <Reinput
-            underlineColor="#898989"
-            labelActiveColor="#00BCD4"
-            labelColor="#898989"
-            underlineActiveColor="#00BCD4"
-            label="Email"
-            style={styles.nameInput3}
-          />
-
-          <Reinput
-            underlineColor="#898989"
-            labelActiveColor="#00BCD4"
-            labelColor="#898989"
-            underlineActiveColor="#00BCD4"
-            label="City / Nearest location"
-            style={styles.nameInput}
-          />
-        </View>
-
-        <View style={styles.buttonAndIndicator}>
-          {defaultLoading ? (
-            <SkypeIndicator color="#00BCD4" size={20} />
-          ) : (
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                color="#FE4141"
-                style={styles.buttonRegister}
-                title="Register"
-                onPress={() => {
-                //   this.loginUser();
-                this.props.navigation.navigate("AddPhoneNumber")
-                }}>
-                <Text style={styles.registerText}>Register</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
-        <View style={styles.bottomView}>
-          <View style={styles.leftContainer}>
-            <Text
-              style={{fontSize: hp('2%'), fontFamily: 'LexendDeca-Regular'}}>
-              Already registered ?
-            </Text>
-            <TouchableOpacity>
-              <Text style={styles.loginText}>Login</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.rightContainer}>
-            <TouchableOpacity>
-              <Text style={styles.textUnderline}>Privacy Policy</Text>
-            </TouchableOpacity>
-            <Text
-              style={{fontSize: hp('2%'), fontFamily: 'LexendDeca-Regular'}}>
-              and
-            </Text>
-            <TouchableOpacity>
-              <Text style={styles.textUnderline}>T&C</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+            <Picker.Item label="Wallet" value="key0" />
+            <Picker.Item label="ATM Card" value="key1" />
+            <Picker.Item label="Debit Card" value="key2" />
+            <Picker.Item label="Credit Card" value="key3" />
+            <Picker.Item label="Net Banking" value="key4" />
+          </Picker>
+        </Item>
+        <View style={{flex: 0.05}} />
+        <LinearGradient
+          colors={['#c775b0', '#5058a6']}
+          start={{x: 0.2, y: 0.2}}
+          end={{x: 0.6, y: 0.1}}
+          style={{
+            width: wp(77),
+            height: hp(6.5),
+            alignSelf: 'center',
+            borderRadius: 8,
+          }}>
+          <Button
+            onPress={this.on_singUp}
+            color="transparent"
+            style={{alignSelf: 'center'}}>
+            Sign up
+          </Button>
+        </LinearGradient>
+      </ImageBackground>
     );
   }
 }
