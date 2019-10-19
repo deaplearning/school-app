@@ -21,10 +21,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from './style';
 import Banner from '../../../assets/banners/banner1.png';
 import Logo from '../../../assets/banners/logo.png';
-import {Colors} from '../../Constant/color';
-
-// CONSTANT
-const {appColor, appFont} = Colors;
 
 export default class AddPhoneNumber extends Component {
   state = {

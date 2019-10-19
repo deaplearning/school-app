@@ -1,275 +1,108 @@
-import React, { Component } from 'react';
-import PhoneInput from 'react-native-phone-input';
-import { connect } from 'react-redux';
-import { View, StatusBar } from 'react-native';
-import { Container, Item, Input, Button, Text } from 'native-base';
-import { phoneChanged, codeChanged, onCodeDispatched, onPhoneLogin, clearAuth, onSignOut } from '../actions'
-import firebase from 'react-native-firebase';
+import React, {Component} from 'react';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+  Image,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
-class LoginScreen extends Component {
+// PACKAGES
+import GoogleIcon from 'react-native-vector-icons/AntDesign';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import {Input, Button} from 'galio-framework';
+import LinearGradient from 'react-native-linear-gradient';
+import {withNavigation} from 'react-navigation';
 
-    static navigationOptions = {
-        header: null,
-    };
+// FILES
+import styles from './style';
+import Banner from '../../../assets/banners/banner1.png';
+import Logo from '../../../assets/banners/logo.png';
 
-   constructor() {
-       super();
-       this.state = {
-           valid: ''
-       }
-   }
+class Login extends Component {
+  state = {
+    code: '',
+  };
 
-    componentDidMount() {
-        this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                this.props.navigation.navigate('Dashboard')
-            } 
-        });
-    }
-
-    componentWillUnmount() {
-        if (this.unsubscribe) this.unsubscribe();
-    }
-
-    onPhoneChange(text) {
-        this.props.phoneChanged(text);
-        if(this.phone.isValidNumber()){
-            this.setState({
-                valid: true
-            })
-        }else {
-            this.setState({
-                valid: false
-            })
-        }
-    }
-
-    onCodeChange(text) {
-        this.props.codeChanged(text);
-    }
-
-    onLoginButtonPress(){
-        this.props.onPhoneLogin(this.props.auth.phone);
-    }
-
-    onCodeButtonPress(){
-        this.props.onCodeDispatched(this.props.auth.codeInput);
-    }
-
-    renderPhoneNumberInput() {
-        const {
-            auth,
-        } = this.props;
-        return (
-            <View
-                style={{
-                    paddingRight: 20,
-                    paddingLeft: 20
-                }}
-            >
-                <Item 
-                    rounded
-                    style={{
-                        backgroundColor: 'white', 
-                        alignContent: 'center',
-                    }}
-                >
-                    <Input
-                        style={{
-                            textAlign: 'center'
-                        }}
-                        maxLength={15}
-                        keyboardType={'phone-pad'}
-                    />
-                    <PhoneInput
-                        ref={ref => {
-                            this.phone = ref;
-                        }}
-                        style={{
-                            alignContent:'center', 
-                            justifyContent: 'center'
-                        }}
-                        textStyle={{ 
-                            fontSize: 20, 
-                            fontWeight:'bold' 
-                        }}
-                        onChangePhoneNumber={this.onPhoneChange.bind(this)}
-                        value={auth.phone}
-                    /> 
-                </Item>
-                {this.state.valid?
-                <Button
-                    light 
-                    rounded 
-                    style={{
-                        width: '100%', 
-                        marginTop: 10, 
-                        justifyContent: 'center' 
-                    }}
-                    onPress={this.onLoginButtonPress.bind(this)}
-                >
-                    <Text 
-                        style={{
-                            fontSize: 20, 
-                            color: '#042a41', 
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Log in With Phone
-                    </Text>
-                </Button>
-                :
-                null}
+  render() {
+    return (
+      <ImageBackground style={styles.container} source={Banner}>
+        <ScrollView>
+          <View style={styles.childContainer}>
+            <View>
+              <Image
+                source={Logo}
+                style={styles.logoStyle}
+                resizeMode={'contain'}
+              />
             </View>
-            );
-    }
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputText}>Login Your Account</Text>
 
-    renderCodeInput() {
-        const {
-            auth,
-        } = this.props;
-        return (
-            <View
-                style={{  
-                    paddingRight: 20,
-                    paddingLeft: 20
-                }}
-            >
-                <Item 
-                    rounded 
-                    style={{
-                        backgroundColor: 'white', 
-                        alignContent: 'center',
-                    }}
-                >
-                    <Input
-                        style={{
-                            textAlign: 'center',
-                            fontSize: 20, 
-                            color: '#042a41', 
-                            fontWeight: 'bold'  
-                        }}
-                        maxLength={8}
-                        keyboardType={'numeric'}
-                        placeholder='confirmation code here'
-                        onChangeText={this.onCodeChange.bind(this)}
-                        value={auth.codeInput}
-                    />
-                </Item>
-                {(auth.codeInput !== '' ) &&
-                <Button 
-                    light 
-                    rounded
-                    style={{
-                        width: '100%', 
-                        marginTop: 10, 
-                        justifyContent: 'center' 
-                    }}
-                    onPress={this.onCodeButtonPress.bind(this)}
-                >
-                    <Text
-                        style={{ 
-                            fontSize: 20, 
-                            color: '#042a41',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                    Enter Code
-                    </Text>
-                </Button>}
+              <Input
+                placeholder="Phone Number"
+                bgColor="#e3e6e4"
+                borderless={true}
+                keyboardType="numeric"
+                style={{width: wp('85%')}}
+              />
+              <TouchableOpacity
+                ref="touchableOpacity"
+                style={styles.nextBtnContainer}>
+                <LinearGradient
+                  colors={['#c775b0', '#5058a6']}
+                  start={{x: 0.2, y: 0.2}}
+                  end={{x: 0.6, y: 0.1}}
+                  style={styles.nextBtnSubContainer}>
+                  <Text style={{color: 'white'}}>Next</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+
+              <View style={styles.lineContainer}>
+                <View style={styles.hairline} />
+                <Text style={styles.loginButtonBelowText1}>OR</Text>
+                <View style={styles.hairline} />
+              </View>
             </View>
-        );
-    }
 
-    renderStatusMessage() {
-        const {
-            message,
-        } = this.props.auth
-        if (message) {
-            console.log(message, "LLLL")
-            return (
-                <View 
-                    style={{
-                        paddingRight: 20,
-                        paddingLeft: 20
-                    }}
-                >
-                    <Text 
-                        style={{
-                            margin: 25, 
-                            fontWeight: 'bold', 
-                            fontSize: 18, 
-                            color:'white'
-                        }}
-                    >
-                        {
-                            (message.startsWith('Sign in with Phone number error:') ) 
-                            ? 
-                            'Waiting to read verification SMS...' 
-                            : 
-                            message
-                        }
-                    </Text>
+            <TouchableOpacity style={styles.googleBtnContainer}>
+              <View style={styles.googleBtnSubContainer}>
+                <View
+                  style={{
+                    borderRightWidth: 2,
+                    borderColor: '#e3e6e4',
+                  }}>
+                  <GoogleIcon name="google" color="red" size={18} />
                 </View>
-            )
-        }
-        return null;
-    }
+              </View>
+              <Text style={{color: 'red'}}>Sign Up With Google</Text>
+            </TouchableOpacity>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignSelf: 'center',
+                width: '85%',
+              }}>
+              <View>
+                <Text>Don't Have an account?</Text>
+              </View>
 
-    render() {
-        const {
-            auth
-        } = this.props;
-        return (
-            <Container style={{ flex: 1, backgroundColor: '#4F6D7A'}}>
-                <StatusBar
-                    barStyle="light-content"
-                    backgroundColor="#062b40"
-                />
-                <Container style={{ flex: 1, justifyContent: 'center', backgroundColor: '#4F6D7A' }}>
-                    {!auth.confirmResult && this.renderPhoneNumberInput()}
-                    {auth.confirmResult && this.renderCodeInput()}
-                    {this.renderStatusMessage()}
-                    {auth.message.startsWith('Code confirmation error:')&&
-                    <View 
-                        style={{ 
-                            justifyContent: 'center', 
-                            alignItems: 'center'
-                        }}
-                    >
-                    <Button
-                        light 
-                        rounded
-                        style={{ 
-                            width: '100%', 
-                            marginTop: 10, 
-                            justifyContent: 'center' 
-                        }}
-                        onPress={() => this.props.clearAuth()}
-                    >
-                   <Text
-                        style={{
-                            fontSize: 20, 
-                            color: '#042a41', 
-                            fontWeight: 'bold' 
-                        }}
-                   > 
-                       Try Again
-                   </Text> 
-                </Button>
-                </View>
-                }
-                </Container>
-            </Container>
-        );
-    }
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('SignUp')}>
+                <Text style={{color: '#c775b0'}}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </ImageBackground>
+    );
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        auth: state.auth
-    }
-};
-
-
-export default connect(mapStateToProps, { phoneChanged, codeChanged, onCodeDispatched, onPhoneLogin, clearAuth, onSignOut })(LoginScreen);
+export default withNavigation(Login);

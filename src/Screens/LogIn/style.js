@@ -1,144 +1,80 @@
-import { StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
+import {Dimensions, StyleSheet} from 'react-native';
 
+// PACKAGES
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+//FILES
 
 export default styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+  },
+  btnStyle: {marginLeft: wp('2%'), alignSelf: 'center', flexDirection: 'row'},
+  childContainer: {
+    height: hp('90%'),
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  logoStyle: {width: wp('40%'), height: hp('20%')},
+  inputContainer: {justifyContent: 'center', alignItems: 'center'},
+  inputText: {fontSize: hp('3%'), color: '#c775b0'},
+  googleBtnContainer: {
+    width: '85%',
+    height: '8%',
+    borderRadius: 5,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    shadowColor: '#00000021',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 3,
+    alignItems: 'center',
+  },
+  googleBtnSubContainer: {width: 30, height: '6%', justifyContent: 'center'},
+  lineContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    marginTop: hp('5%'),
+  },
+  hairline: {
+    backgroundColor: '#A2A2A2',
+    height: 1,
+    width: '40%',
   },
 
-  headContainer: {
-    marginBottom: hp("20%"),
-    flexWrap: "wrap",
-    alignSelf: "center",
-
-    marginTop: hp("6%")
+  loginButtonBelowText1: {
+    fontFamily: 'AvenirNext-Bold',
+    fontSize: 14,
+    color: '#A2A2A2',
   },
-
-  headText: {
-    fontSize: hp("6%"),
-    fontFamily: "Nunito-ExtraBold",
-    color: "#00BCD4",
-    padding: 10,
-    textAlign: "center",
-    fontWeight: "bold"
+  nextBtnSubContainer: {
+    width: '100%',
+    height: '100%',
+    shadowColor: '#00000021',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    alignItems: 'center',
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 3,
+    justifyContent: 'center',
+    borderRadius: 5,
   },
-  headDownText: {
-    fontSize: hp("2%"),
-    color: "#898989",
-    textAlign: "center",
-    fontFamily: "LexendDeca-Regular"
+  nextBtnContainer: {
+    width: '85%',
+    height: '18%',
+    flexDirection: 'row',
   },
-
-  InputsContainer: {
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: hp("-17%"),
-    //backgroundColor:"red",
-    height: hp("10%"),
-    
-    // backgroundColor:"red"
-  },
-  pickerNew: {
-    width: wp("65%"),
-    height: hp("7%"),
-    //backgroundColor: "red",
-    alignSelf:"center",
-    borderRadius:30,
-    borderWidth:1,
-    borderColor:"#898989",
-    marginTop:hp("2%"),
-    padding:10
-  },
-
-  pickerCon:{
-
-    alignSelf:"center"
-  },
-
-  nameInput2: {
-    width: wp("60%"),
-    height: hp("9%"),
-
-    marginTop: hp("2%")
-  },
-
-  buttonRegister: {
-    borderRadius: 30,
-    backgroundColor: "#00BCD4",
-    width: wp("30%"),
-    height: hp("6%"),
-    alignItems: "center",
-    padding: 5,
-    shadowColor: "black",
-    shadowOpacity: 1,
-    elevation: 7,
-    shadowRadius: 1
-  },
-
-  registerText: {
-    fontSize: hp("3%"),
-    color: "white"
-  },
-
-  loginText: {
-    fontSize: hp("116%"),
-    color: "#00BCD4"
-  },
-  textUnderline: {
-    textDecorationLine: "underline"
-  },
-
-  otpContainer: {
-    alignSelf: "center",
-    marginTop: hp("6%")
-  },
-
-  otpText: {
-    color: "#898989",
-    fontFamily: "LexendDeca-Regular"
-  },
-
-  alreadyConatiner: {
-    alignSelf: "center",
-    alignItems: "center",
-    marginTop: hp("85%"),
-
-    position: "absolute"
-  },
-
-  newAccountText: {
-    color: "#898989",
-    fontFamily: "LexendDeca-Regular"
-  },
-
-  registerTextTwo: {
-    color: "#00BCD4",
-    fontWeight: "bold",
-    fontFamily: "LexendDeca-Regular"
-  },
-
-  buttonAndIndicator: {
-    width: wp("30%"),
-    height: hp("10%"),
-    //backgroundColor: 'yellow',
-    flexDirection: "column",
-    flexWrap: "wrap",
-    alignSelf: "center",
-    alignContent: "center",
-    marginTop: hp("5%"),
-    justifyContent: "center",
-    alignItems: "center"
-  },
-
-  buttonContainer: {
-    alignSelf: "center"
-    //marginTop: hp('50%'),
-    //position: 'absolute',
-    //backgroundColor:"red"
-  }
 });

@@ -1,4 +1,4 @@
-import Login from "./LogIn/login";
+import Login from "./LogIn";
 import SignUp from "./SignUp";
 import Splash from "./Splash";
 import Home from "./Home";
