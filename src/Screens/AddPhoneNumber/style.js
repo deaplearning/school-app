@@ -25,7 +25,7 @@ export default styles = StyleSheet.create({
   inputContainer: {justifyContent: 'center', alignItems: 'center'},
   inputText: {fontSize: hp('3%'), color: '#c775b0'},
   googleBtnContainer: {
-    width: '85%',
+    width: '65%',
     height: '8%',
     borderRadius: 5,
     backgroundColor: 'white',
