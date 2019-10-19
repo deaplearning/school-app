@@ -1,180 +1,96 @@
 import React, {Component} from 'react';
-import styles from './style';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Picker,
-  Button,
-  TouchableHighlight,
-  StatusBar,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-
-
-
-// PACKAGES
-import Reinput from 'reinput';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-
-import PhoneNumberPicker from "react-native-country-code-telephone-input";
-
-import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator,
-} from 'react-native-indicators';
+import {Text, View, Picker, Image, ImageBackground} from 'react-native';
 
 // FILES
-import {Colors} from '../../Constant/color';
+import Banner from '../../../assets/banners/background.png';
+import Logo from '../../../assets/banners/logo.png';
+import styles from './style';
 
-const {appFont} = Colors;
+// PACKAGES
+import {Input, Button} from 'galio-framework';
 
-export default class SignUP extends Component {
 
+export default class SignUp extends Component {
+  constructor() {
+    super();
 
-  PhoneNumberPickerChanged(country, callingCode, phoneNumber) {
+    this.state = {
+      FullName: '',
+      class: '',
+      sections: '',
+    };
+  }
+
+  on_singUp = () => {
+    console.log('FUll name', this.state.FullName);
+    console.log('Classes', this.state.class);
+    console.log('Section', this.state.sections);
+
     this.setState({
-      countryName: country.name,
-      callingCode: callingCode,
-      phoneNo: phoneNumber
+      FullName: '',
+      sections: '',
+      class: '',
     });
-  }
-
-  state = {value: ''};
-
-  updateValue = value => {
-    this.setState({value: value});
-  };
-
-  state = {value: '', defaultLoading: false};
-
-  componentWillUnmount() {
-    this.setState({defaultLoading: false});
-  }
-
-  loginUser = () => {
-    this.setState({defaultLoading: true});
-    setTimeout(() => {
-      this.props.navigation.navigate('Home');
-    }, 1000);
   };
 
   render() {
-    const {defaultLoading} = this.state;
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="white" />
-
-        <View style={styles.headContainer}>
-          <Text style={styles.headText}>Access</Text>
-
-          <Text style={styles.headDownText}> 5000+ Engaging Videos</Text>
-        </View>
-
-        <View style={styles.InputsContainer}>
-          <Reinput
-            underlineColor="#898989"
-            labelActiveColor="#00BCD4"
-            labelColor="#898989"
-            underlineActiveColor="#00BCD4"
-            label="Name"
-            style={[{fontFamily: appFont}, styles.nameInput]}
-          />
-
-          <View
-            //Container for picker and number input
-            style={{
-              width: wp('95%'),
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              height: hp('12%'),
-              borderColor: '#898989',
-              marginTop: hp('2%'),
-              //backgroundColor:"blue",
-              alignItems:"center",
-              marginLeft:wp("9%")
-              
-              
-            }}>
-             <PhoneNumberPicker 
-              countryHint={{ name: "Pakistan", cca2: "PK", callingCode: "92" }}
-              onChange={this.PhoneNumberPickerChanged.bind(this)}
-            />
-          </View>
-          <Reinput
-            underlineColor="#898989"
-            labelActiveColor="#00BCD4"
-            labelColor="#898989"
-            underlineActiveColor="#00BCD4"
-            label="Email"
-            style={styles.nameInput3}
-          />
-
-          <Reinput
-            underlineColor="#898989"
-            labelActiveColor="#00BCD4"
-            labelColor="#898989"
-            underlineActiveColor="#00BCD4"
-            label="City / Nearest location"
-            style={styles.nameInput}
+      <ImageBackground source={Banner} style={styles.container}>
+        <View style={{alignSelf: 'center', flex: 0.6}}>
+          <Image
+            source={Logo}
+            style={styles.LogoStyling}
+            resizeMode="contain"
           />
         </View>
 
-        <View style={styles.buttonAndIndicator}>
-          {defaultLoading ? (
-            <SkypeIndicator color="#00BCD4" size={20} />
-          ) : (
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                color="#FE4141"
-                style={styles.buttonRegister}
-                title="Register"
-                onPress={() => {
-                //   this.loginUser();
-                this.props.navigation.navigate("AddPhoneNumber")
-                }}>
-                <Text style={styles.registerText}>Register</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
-        <View style={styles.bottomView}>
-          <View style={styles.leftContainer}>
-            <Text
-              style={{fontSize: hp('2%'), fontFamily: 'LexendDeca-Regular'}}>
-              Already registered ?
-            </Text>
-            <TouchableOpacity>
-              <Text style={styles.loginText}>Login</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.rightContainer}>
-            <TouchableOpacity>
-              <Text style={styles.textUnderline}>Privacy Policy</Text>
-            </TouchableOpacity>
-            <Text
-              style={{fontSize: hp('2%'), fontFamily: 'LexendDeca-Regular'}}>
-              and
-            </Text>
-            <TouchableOpacity>
-              <Text style={styles.textUnderline}>T&C</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+        <Text style={styles.Text}>Enter Your Personal Information</Text>
+        <Input
+          onChangeText={e => {
+            this.setState({FullName: e});
+          }}
+          placeholder="Full Name"
+          borderless
+          placeholderTextColor="#9a9a9a"
+          style={styles.InputText}
+          clearButtonMode="always"
+          value={this.state.FullName}
+        />
+        <Picker
+          selectedValue={this.state.class}
+          style={styles.Picker}
+          value={this.state.class}
+          onValueChange={e => {
+            this.setState({class: e});
+          }}>
+          <Picker.Item label="Class" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="Bootstarp" value="bt" />
+          <Picker.Item label="Python" value="py" />
+        </Picker>
+     
+        <Picker
+          selectedValue={this.state.sections}
+          style={styles.Picker}
+          value={this.state.sections}
+          onValueChange={(e, itemIndex) => {
+            this.setState({sections: e});
+          }}>
+          <Picker.Item label="Section" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="Bootstarp" value="bt" />
+          <Picker.Item label="Python" value="py" />
+        </Picker>
+        <Button
+          onPress={this.on_singUp}
+          style={styles.submitButton
+            
+          }
+          capitalize
+          size="small">
+          Sign up
+        </Button>
+      </ImageBackground>
     );
   }
 }
