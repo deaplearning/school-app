@@ -24,14 +24,18 @@ export default styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#f2f2f2',
     marginTop: 10,
-    color: '#9a9a9a',
+  
   },
   InputText: {
     width: wp(77),
     height: hp(6.5),
-    color: '#999999',
+    color: '#9a9a9a',
     alignSelf: 'center',
     backgroundColor: '#f2f2f2',
+    borderRadius :8,
+    paddingLeft:20,
+    fontSize:20
+
   },
   LogoStyling: {
     width: wp('40%'),
@@ -41,9 +45,10 @@ export default styles = StyleSheet.create({
    submitButton:{
     width: wp(77),
     height: hp(6.5),
-    color: '#999999',
     alignSelf: 'center',
-    marginTop: 20,
+   
+  
 
-   }
+   },
+   
 });
