@@ -1,28 +1,43 @@
-import { StyleSheet, StatusBar } from "react-native";
+import {Dimensions, StyleSheet} from 'react-native';
 
+// PACKAGES
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
-
-import { Colors } from "../../Constant/color";
-
-const { appColor } = Colors;
-const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
-
-export const colors = {
-  black: "#1a1917",
-  gray: "#888888",
-  background1: "#B721FF",
-  background2: "#21D4FD"
-};
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default styles = StyleSheet.create({
   container: {
-    justifyContent: "space-around",
-    width: "100%",
-    height: "100%"
+    flex: 1,
+    justifyContent: "center"
   },
+  btnStyle: {marginLeft: wp('2%'), alignSelf: 'center', flexDirection: 'row'},
+  subContainer: {
+    height: hp('90%'),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoStyling: {width: wp('40%'), height: hp('20%')},
+  borderStyleBase: {
+    width: 30,
+    height: 30,
+  },
+  borderStyleHighLighted: {
+    borderColor: 'black',
+  },
+  underlineStyleBase: {
+    width: 30,
+    height: 45,
+    borderWidth: 1,
+    borderColor: '#C1C1C1',
+    backgroundColor: '#e3e6e4',
+  },
+
+  underlineStyleHighLighted: {
+    borderColor: 'black',
+  },
+
+  // for dashboard
   card: {
     shadowColor: "#00000021",
     shadowOffset: {
@@ -37,7 +52,7 @@ export default styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 20,
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-around",
     alignSelf: "center",
     alignItems: "center"
   },
@@ -47,13 +62,13 @@ export default styles = StyleSheet.create({
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
     flexDirection: "row",
-    marginLeft: hp("5%")
+    // marginLeft: hp("5%")
   },
   cardContent: {
     paddingVertical: 12.5,
     paddingHorizontal: 16
   },
-    
+
   cardImage: {
     height: 40,
     width: 40,
@@ -62,21 +77,19 @@ export default styles = StyleSheet.create({
     alignSelf: "center"
   },
   title: {
-    fontFamily: "LexendDeca-Regular",
     color: "white",
     fontSize: hp("2%"),
     fontWeight: "bold",
     textAlign: "center",
-    alignSelf: "center",
+    alignSelf: "center"
   },
   customCard: {
-    backgroundColor: appColor
+    backgroundColor: "red"
   },
   customCardText: {
     color: "white",
-    fontFamily: "LexendDeca-Regular",
     fontSize: hp("1.5%")
   },
   defaultHeaderColor: { backgroundColor: "white" },
-  titleStyle: { color: "black", fontSize: 18, fontFamily: "Nunito-ExtraBold" }
+  titleStyle: { color: "black", fontSize: 18 }
 });

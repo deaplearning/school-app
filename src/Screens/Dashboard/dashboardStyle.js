@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 import { StyleSheet, StatusBar } from "react-native";
 
 import {
@@ -8,6 +15,7 @@ import {
 import { Colors } from "../../Constant/color";
 
 const { appColor } = Colors;
+const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
 
 export const colors = {
   black: "#1a1917",
@@ -18,10 +26,9 @@ export const colors = {
 
 export default styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight,
-    // flex: 1,
-    width: '100%', height: '100%',
-    justifyContent: "space-between"
+    justifyContent: "space-around",
+    width: "100%",
+    height: "100%"
   },
   card: {
     shadowColor: "#00000021",
@@ -53,7 +60,7 @@ export default styles = StyleSheet.create({
     paddingVertical: 12.5,
     paddingHorizontal: 16
   },
-
+    
   cardImage: {
     height: 40,
     width: 40,
@@ -68,7 +75,6 @@ export default styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     alignSelf: "center",
-    marginLeft: hp("5%")
   },
   customCard: {
     backgroundColor: appColor

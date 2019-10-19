@@ -58,8 +58,17 @@ export default class AddPhoneNumber extends Component {
                   width: wp('85%'),
                   alignItems: 'center',
                   justifyContent: 'center',
+                  borderRadius: 5,
+                  shadowColor: '#00000021',
+                  shadowOffset: {
+                    width: 0,
+                    height: 6,
+                  },
+                  shadowOpacity: 0.37,
+                  shadowRadius: 7.49,
+                  elevation: 3,
                 }}>
-                <Button color="transparent" shadowless>
+                <Button color="transparent">
                   NEXT
                 </Button>
               </LinearGradient>
@@ -74,7 +83,7 @@ export default class AddPhoneNumber extends Component {
                   <Text>Have an account?</Text>
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
                   <Text style={{color: '#c775b0'}}>Login</Text>
                 </TouchableOpacity>
               </View>

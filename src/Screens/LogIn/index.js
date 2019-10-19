@@ -53,7 +53,9 @@ class Login extends Component {
               />
               <TouchableOpacity
                 ref="touchableOpacity"
-                style={styles.nextBtnContainer}>
+                style={styles.nextBtnContainer}
+                onPress={() => this.props.navigation.navigate("PhoneVerification")}
+                >
                 <LinearGradient
                   colors={['#c775b0', '#5058a6']}
                   start={{x: 0.2, y: 0.2}}
