@@ -31,12 +31,10 @@ export default class PhoneVerification extends Component {
   };
 
   render() {
-
     return (
       <ImageBackground style={styles.container} source={Banner}>
         <ScrollView>
-          <View
-            style={styles.subContainer}>
+          <View style={styles.subContainer}>
             <View>
               <Image
                 source={Logo}
@@ -63,39 +61,29 @@ export default class PhoneVerification extends Component {
               }}
             />
 
-
             <TouchableOpacity
               onPress={() => alert('Resending Code')}
               style={styles.btnStyle}>
-              <ReloadIcon name="reload" size={22} color={"gray"} />
-              <Text style={{color: "gray", fontFamily: 'Nunito-ExtraBold'}}>
+              <ReloadIcon name="reload" size={22} color={'gray'} />
+              <Text style={{color: 'gray', fontFamily: 'Nunito-ExtraBold'}}>
                 Resend
               </Text>
             </TouchableOpacity>
-            <LinearGradient
+
+            <TouchableOpacity
+              ref="touchableOpacity"
+              style={styles.nextBtnContainer}
+              onPress={() =>
+                this.props.navigation.navigate('Dashboard')
+              }>
+              <LinearGradient
                 colors={['#c775b0', '#5058a6']}
                 start={{x: 0.2, y: 0.2}}
                 end={{x: 0.6, y: 0.1}}
-                style={{
-                  height: hp('7%'),
-                  width: wp('85%'),
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 5,
-                  shadowColor: '#00000021',
-                  shadowOffset: {
-                    width: 0,
-                    height: 6,
-                  },
-                  shadowOpacity: 0.37,
-                  shadowRadius: 7.49,
-                  elevation: 3,
-                }}>
-            <Button color="transparent" onPress={() => this.props.navigation.navigate("Dashboard")}>
-              NEXT
-            </Button>
-            </LinearGradient>
-            {/* </View> */}
+                style={styles.nextBtnSubContainer}>
+                <Text style={{color: 'white'}}>Next</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </ImageBackground>

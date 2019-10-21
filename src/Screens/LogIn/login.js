@@ -120,7 +120,7 @@ class Login extends Component {
                   this.loginUser();
                 }}
               >
-                <Text style={styles.registerText}>Next</Text>
+                <Text style={styles.nextBtnStyle}>Next</Text>
               </TouchableOpacity>
             </View>
           )}

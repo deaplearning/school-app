@@ -50,19 +50,19 @@ export default styles = StyleSheet.create({
     marginVertical: 10,
     width: "80%",
     marginHorizontal: 10,
-    borderRadius: 20,
+    borderRadius: 5,
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignSelf: "center",
     alignItems: "center"
   },
   cardHeader: {
-    paddingVertical: 17,
+    paddingVertical: 22,
     paddingHorizontal: 16,
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
     flexDirection: "row",
-    // marginLeft: hp("5%")
+    marginRight: wp("3%")
   },
   cardContent: {
     paddingVertical: 12.5,
@@ -70,18 +70,19 @@ export default styles = StyleSheet.create({
   },
 
   cardImage: {
-    height: 40,
-    width: 40,
+    height: 50,
+    width: 50,
     flexDirection: "row",
-    marginLeft: hp("5%"),
-    alignSelf: "center"
+    alignSelf: "center",
+    marginRight: wp("5%")
   },
   title: {
     color: "white",
-    fontSize: hp("2%"),
-    fontWeight: "bold",
+    fontSize: hp("2.5%"),
+    fontFamily: "LexendDeca-Regular",
     textAlign: "center",
-    alignSelf: "center"
+    alignSelf: "center",
+    marginLeft: wp("3%")
   },
   customCard: {
     backgroundColor: "red"

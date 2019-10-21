@@ -35,4 +35,25 @@ export default styles = StyleSheet.create({
   underlineStyleHighLighted: {
     borderColor: 'black',
   },
+  nextBtnStyle: {fontSize: hp("2%"), color: "white"},
+  nextBtnSubContainer: {
+    width: '100%',
+    height: '100%',
+    shadowColor: '#00000021',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    alignItems: 'center',
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 3,
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  nextBtnContainer: {
+    width: '85%',
+    height: '8%',
+    flexDirection: 'row',
+  },
 });

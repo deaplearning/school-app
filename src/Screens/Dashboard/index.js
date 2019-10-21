@@ -83,9 +83,8 @@ export default class Dashboard extends Component {
           style={{
             width: '100%',
             height: '100%',
-            marginTop: hp('12%'),
           }}>
-          <ScrollView style={{flex:1}}> 
+          <ScrollView style={{flex: 1}}>
             <View
               style={{
                 width: '80%',
@@ -142,7 +141,7 @@ export default class Dashboard extends Component {
               <Text
                 style={{
                   fontFamily: 'LexendDeca-Regular',
-                  color: "#c775b0",
+                  color: '#c775b0',
                   fontSize: 18,
                 }}>
                 What will you learn Today?
@@ -160,9 +159,9 @@ export default class Dashboard extends Component {
                 shadowRadius: 3,
                 elevation: 3,
                 borderTopLeftRadius: 20,
-                borderTopRightRadius:20,
+                borderTopRightRadius: 20,
               }}>
-              <View style={{marginLeft: wp('5%'), marginTop: hp("5%")}}>
+              <View style={{marginLeft: wp('5%'), marginTop: hp('5%')}}>
                 <Text style={{fontFamily: 'LexendDeca-Regular', fontSize: 18}}>
                   Your Subjects
                 </Text>
@@ -172,7 +171,7 @@ export default class Dashboard extends Component {
                 ref={ref => {
                   this.ListView_Ref = ref;
                 }}
-                contentContainerStyle={styles.listContainer}
+                contentContainerStyle={{flexGrow: 0}}
                 data={subjects}
                 horizontal={false}
                 numColumns={1}
@@ -188,18 +187,33 @@ export default class Dashboard extends Component {
                     <TouchableOpacity
                       style={[
                         {
-                          backgroundColor: 'blue',
+                          backgroundColor: '#fcc79c',
                         },
                         styles.card,
                       ]}
-                      onPress={() =>  this.props.navigation.openDrawer()}>
+                      onPress={() => this.props.navigation.openDrawer()}>
                       <View style={styles.cardHeader}>
-                        <View
-                          style={{
-                            alignSelf: 'center',
-                          }}>
-                          <Text style={styles.title}>{title}</Text>
-                        </View>
+                          {/* <LinearGradient
+                            colors={['#c775b0', '#5058a6']}
+                            start={{x: 0.2, y: 0.2}}
+                            end={{x: 0.6, y: 0.1}}
+                            style={{
+                              shadowColor: '#00000021',
+                              shadowOffset: {
+                                width: 0,
+                                height: 6,
+                              },
+                              width: "100%",
+                              alignItems: 'center',
+                              shadowOpacity: 0.37,
+                              shadowRadius: 7.49,
+                              elevation: 3,
+                              justifyContent: 'center',
+                              borderRadius: 5,
+                            }}> */}
+                    
+                            <Text style={styles.title}>{title}</Text>
+                          {/* </LinearGradient> */}
                       </View>
                       <View>
                         <Image

@@ -77,4 +77,5 @@ export default styles = StyleSheet.create({
     height: '18%',
     flexDirection: 'row',
   },
+  nextBtnStyle: {fontSize: hp("2%"), color: "white"}
 });
