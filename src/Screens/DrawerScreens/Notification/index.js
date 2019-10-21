@@ -9,7 +9,7 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
 // PACKAGES
@@ -24,9 +24,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './style';
 import {Colors} from '../../../Constant/color';
 import ParallexHeader from '../../../Components/parallexHeader';
-import {Card , Block} from 'galio-framework';
-import Banner from "../../../../assets/banners/background.png"
-
+import {Card, Block} from 'galio-framework';
+import Banner from '../../../../assets/banners/background.png';
 
 // CONSTANT
 const {appColor, gray, appFont} = Colors;
@@ -34,12 +33,12 @@ const leftIcon = props => {
   return (
     <TouchableOpacity
       style={{
-        width: 45,
-        height: 45,
+        width: 35,
+        height: 35,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 27,
+        borderRadius: 18,
         shadowColor: '#00000021',
         shadowOffset: {
           width: 0,
@@ -58,36 +57,25 @@ const leftIcon = props => {
 export default class Notification extends Component {
   _renderScrollViewContent = () => {
     return (
-
-
       <ImageBackground source={Banner} style={styles.bg}>
-      <View style={styles.container} >
-      <ScrollView>
-        <Card
-         
-          borderless
-          style={styles.card}
-          title="Muhammad Sarim"
-          caption="139 minutes ago"
-          avatar="http://i.pravatar.cc/100?id=skater"
-         
-        />
-         <Card
-         
-         borderless
-         style={styles.card}
-         title="Sohiab Ahmed"
-         caption="139 minutes ago"
-         avatar="http://i.pravatar.cc/100?id=skater"
-        
-       />
-       
-         
-       
-       
-         
-      </ScrollView>
-      </View>
+        <View style={styles.container}>
+          <ScrollView>
+            <Card
+              borderless
+              style={styles.card}
+              title="Muhammad Sarim"
+              caption="10 minutes ago"
+              avatar="http://i.pravatar.cc/100?id=skater"
+            />
+            <Card
+              borderless
+              style={styles.card}
+              title="Sohiab Ahmed"
+              caption="5 minutes ago"
+              avatar="http://i.pravatar.cc/100?id=skater"
+            />
+          </ScrollView>
+        </View>
       </ImageBackground>
     );
   };

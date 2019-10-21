@@ -21,6 +21,7 @@ import ParallexHeader from "../../../Components/parallexHeader";
 import styles from "./style";
 
 // PACKAGES
+import LinearGradient from 'react-native-linear-gradient';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp

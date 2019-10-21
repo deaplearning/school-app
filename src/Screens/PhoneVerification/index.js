@@ -91,7 +91,7 @@ export default class PhoneVerification extends Component {
                   shadowRadius: 7.49,
                   elevation: 3,
                 }}>
-            <Button color="transparent">
+            <Button color="transparent" onPress={() => this.props.navigation.navigate("Dashboard")}>
               NEXT
             </Button>
             </LinearGradient>

@@ -85,17 +85,35 @@ export default class Dashboard extends Component {
             height: '100%',
             marginTop: hp('12%'),
           }}>
-          <ScrollView>
+          <ScrollView style={{flex:1}}> 
             <View
               style={{
                 width: '80%',
                 height: hp('20%'),
                 flexDirection: 'row',
                 marginLeft: wp('5%'),
+                alignItems: 'center',
               }}>
-              <Image
-                source={Logo}
-                style={{width: 60, height: 60}}
+              <View
+                // source={Logo}
+                style={{
+                  width: 80,
+                  height: 80,
+                  backgroundColor: 'white',
+                  borderRadius: 40,
+
+                  justifyContent: 'center',
+                  shadowColor: '#00000021',
+                  shadowOffset: {
+                    width: 0,
+                    height: 3,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  },
+                  shadowOpacity: 0.22,
+                  shadowRadius: 3,
+                  elevation: 3,
+                }}
                 resizeMode={'stretch'}
               />
               <View style={{flexDirection: 'column'}}>
@@ -104,17 +122,15 @@ export default class Dashboard extends Component {
                     marginLeft: '5%',
                     marginRight: '5%',
                     color: 'black',
-                    fontFamily: 'Nunito-ExtraBold',
-                    fontSize: 24,
-                    fontWeight: 'bold',
+                    fontFamily: 'LexendDeca-Regular',
+                    fontSize: 16,
                   }}>
                   Naveen 9,10
                 </Text>
                 <Text
                   style={{
-                    fontSize: 20,
+                    fontSize: 16,
                     marginLeft: '5%',
-                    color: 'blue',
                     fontFamily: 'LexendDeca-Regular',
                   }}>
                   {weatherName}
@@ -123,24 +139,31 @@ export default class Dashboard extends Component {
             </View>
 
             <View style={{marginLeft: wp('5%')}}>
-              <Text style={{fontWeight: 'bold', fontSize: 18}}>What will you learn Today?</Text>
+              <Text
+                style={{
+                  fontFamily: 'LexendDeca-Regular',
+                  color: "#c775b0",
+                  fontSize: 18,
+                }}>
+                What will you learn Today?
+              </Text>
             </View>
             <View
               style={{
                 marginTop: hp('10%'),
-                borderTopWidth: 5,
-                borderTopColor: 'white',
                 shadowColor: '#00000021',
                 shadowOffset: {
                   width: 0,
-                  height: 6,
+                  height: 3,
                 },
-                shadowOpacity: 0.37,
-                shadowRadius: 7.49,
+                shadowOpacity: 0.22,
+                shadowRadius: 3,
                 elevation: 3,
+                borderTopLeftRadius: 20,
+                borderTopRightRadius:20,
               }}>
-              <View style={{marginLeft: wp('5%')}}>
-                <Text style={{fontWeight: 'bold', fontSize: 18}}>
+              <View style={{marginLeft: wp('5%'), marginTop: hp("5%")}}>
+                <Text style={{fontFamily: 'LexendDeca-Regular', fontSize: 18}}>
                   Your Subjects
                 </Text>
               </View>
@@ -165,11 +188,11 @@ export default class Dashboard extends Component {
                     <TouchableOpacity
                       style={[
                         {
-                          backgroundColor: item.color_key,
+                          backgroundColor: 'blue',
                         },
                         styles.card,
                       ]}
-                      onPress={() => this.callingMethod(item)}>
+                      onPress={() =>  this.props.navigation.openDrawer()}>
                       <View style={styles.cardHeader}>
                         <View
                           style={{
