@@ -6,49 +6,26 @@ import {
 } from 'react-native-responsive-screen';
 
 export default styles = StyleSheet.create({
+
   container: {
-    width: wp('100%'),
-    height: hp('100%'),
+    flex: 1,
   },
 
-  Text: {
-    flex: 0.1,
+  picker:{
+    width: wp('85%'),
+    height: hp('7%'),
     alignSelf: 'center',
-    fontSize: 20,
-    color: '#8974f5',
+    backgroundColor: '#e3e6e4',
+    borderRadius: 8,
+    paddingLeft: 18,
   },
-
-  Picker: {
-    width: wp(77),
-    height: hp(6.5),
-    alignSelf: 'center',
-    backgroundColor: '#f2f2f2',
-    marginTop: 10,
-  
+  btnStyle: {marginLeft: wp('2%'), alignSelf: 'center', flexDirection: 'row'},
+  childContainer: {
+    height: hp('90%'),
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
-  InputText: {
-    width: wp(77),
-    height: hp(6.5),
-    color: '#9a9a9a',
-    alignSelf: 'center',
-    backgroundColor: '#f2f2f2',
-    borderRadius :8,
-    paddingLeft:20,
-    fontSize:20
-
-  },
-  LogoStyling: {
-    width: wp('40%'),
-    height: hp('20%'),
-    marginTop: 70,
-  },
-   submitButton:{
-    width: wp(77),
-    height: hp(6.5),
-    alignSelf: 'center',
-   
-  
-
-   },
-   
+  logoStyle: {width: wp('40%'), height: hp('20%')},
+  inputContainer: {justifyContent: 'center', alignItems: 'center'},
+  inputText: {fontSize: hp('3%'), color: '#c775b0'},
 });

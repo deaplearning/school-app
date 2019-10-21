@@ -8,51 +8,33 @@ import {
 
 import {Colors} from '../../../Constant/color';
 
+
 const {appFont, appColor} = Colors;
 
 export default styles = StyleSheet.create({
   container: {
+    
     flex: 1,
     zIndex: 10000,
-    marginTop: hp("13%")
+    marginTop: hp("13%"),
+    width: wp("93%"),
+    alignSelf:"center",
   },
 
-  image: {
-    width: 80,
-    height: 80,
-    opacity: 0.2,
-  },
+  
+  bg:{
+width:wp("100%"),
+height:hp("100%")
 
-  ImageContainer: {
-    marginTop: 70,
-    marginLeft: 270,
   },
-
-  connectContainer: {
-    marginTop: -50,
-    marginLeft: 10,
-  },
-
-  notificationTitle: {
-    fontSize: 25,
-    color: appColor,
-    fontWeight: 'bold',
-    fontFamily: 'Nunito-ExtraBold',
-  },
-
-  bellIcon: {
-    width: wp('30%'),
-    height: hp('20%'),
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  defaultHeaderColor: {
-    backgroundColor: "white"
-  },
-  titleStyle: {
-    color: "black",
-    fontSize: 18,
-    fontFamily: "Nunito-ExtraBold"
-  }
+ card:{
+   marginTop:10,
+   alignSelf:"center",
+   width: wp("90%"),
+   height: hp("12%"),
+   backgroundColor:"#f7e2e7",
+   borderWidth:1,
+   borderColor:"#fbcfcc"
+  
+ }
 });

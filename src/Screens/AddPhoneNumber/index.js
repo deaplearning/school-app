@@ -16,6 +16,11 @@ import {
 } from 'react-native-responsive-screen';
 import {Input, Button} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
+import {
+  GoogleSignin,
+  statusCodes,
+  GoogleSigninButton,
+} from 'react-native-google-signin';
 
 // FILES
 import styles from './style';
@@ -27,6 +32,54 @@ export default class AddPhoneNumber extends Component {
     code: '',
   };
 
+  async componentDidMount() {
+    this._configureGoogleSignIn();
+  }
+  _configureGoogleSignIn() {
+    GoogleSignin.configure({
+      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      webClientId:
+        '221366251240-3bb48v2flrntb3hagriivopj5n0v1pms.apps.googleusercontent.com', //Replace with your own client id
+      offlineAccess: true,
+      hostedDomain: '',
+      loginHint: '',
+      forceConsentPrompt: true,
+      accountName: '',
+      iosClientId:
+        'XXXXXX-krv1hjXXXXXXp51pisuc1104q5XXXXXXe.apps.googleusercontent.com',
+    });
+  }
+
+  _signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      await GoogleSignin.revokeAccess();
+      console.log(userInfo);
+      Alert.alert(userInfo.user.name);
+      console.log(userInfo.user.id);
+      console.log(userInfo.user.email);
+      console.log(userInfo.user.photo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // sign in was cancelled
+        Alert.alert('cancelled');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation in progress already
+        Alert.alert('in progress');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        Alert.alert('play services not available or outdated');
+      } else {
+        console.log('Something went wrong:', error.toString());
+        Alert.alert('Something went wrong', error.toString());
+        this.setState({
+          error,
+        });
+        
+      }
+
+    }
+  };
   render() {
     return (
       <ImageBackground style={styles.container} source={Banner}>
@@ -88,7 +141,9 @@ export default class AddPhoneNumber extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-            <TouchableOpacity style={styles.googleBtnContainer}>
+            <TouchableOpacity
+              style={styles.googleBtnContainer}
+              onPress={this._signIn}>
               <View style={styles.googleBtnSubContainer}>
                 <View
                   style={{
