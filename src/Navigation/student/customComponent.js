@@ -37,17 +37,17 @@ export default class CustomSidebarMenu extends Component {
     //You can find the Icons from here https://material.io/tools/icons/
     this.items = [
       {
-        navOptionThumb: 'build',
+        navOptionThumb: 'person',
         navOptionName: 'Profile',
         screenToNavigate: 'Profile',
       },
       {
-        navOptionThumb: 'camera',
+        navOptionThumb: 'group',
         navOptionName: 'Parent Connect',
         screenToNavigate: 'ParentConnect',
       },
       {
-        navOptionThumb: 'build',
+        navOptionThumb: 'question',
         navOptionName: 'Quizzo',
         screenToNavigate: 'Quizzo',
       },
@@ -57,12 +57,12 @@ export default class CustomSidebarMenu extends Component {
         screenToNavigate: 'Quizzo',
       },
       {
-        navOptionThumb: 'image',
+        navOptionThumb: 'camera',
         navOptionName: 'Notification',
         screenToNavigate: 'Notification',
       },
       {
-        navOptionThumb: 'build',
+        navOptionThumb: 'phone',
         navOptionName: 'Contact Us',
         screenToNavigate: 'ContactUs',
       },
@@ -100,7 +100,7 @@ export default class CustomSidebarMenu extends Component {
             start={{x: 0.2, y: 0.2}}
             end={{x: 0.6, y: 0.1}}
             style={{
-              height: Dimensions.get('window').height - 430,
+              height: hp("20%"),
               width: Dimensions.get('window').width - 80,
               alignItems: 'center',
               justifyContent: 'center',
