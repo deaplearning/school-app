@@ -1,7 +1,7 @@
 export const Colors = {
   appColor: '#c775b0',
   appColor2:'#6363FF',
-  black: '#1a1917',
+  appblackColor: '#1a1917',
   gray: '#888888',
   grayText:'#898989',
   background1: '#B721FF',

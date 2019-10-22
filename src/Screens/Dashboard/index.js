@@ -7,6 +7,7 @@ import {
   ImageBackground,
   Image,
   FlatList,
+  ActivityIndicator,
 } from 'react-native';
 
 // PACKAGES
@@ -14,20 +15,26 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Input, Button} from 'galio-framework';
+import {NavBar} from 'galio-framework';
 import LinearGradient from 'react-native-linear-gradient';
+import MenuIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Notification from 'react-native-vector-icons/MaterialIcons';
 
 // FILES
 import styles from './style';
 import Banner from '../../../assets/banners/banner2.png';
 import Logo from '../../../assets/banners/logo.png';
+import {Colors} from '../../Constant/color';
+
+// CONSTANT
+const {appblackColor} = Colors;
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
-      loader: false,
+      loader: true,
       goTop: false,
       weatherName: '',
       slider1Ref: null,
@@ -54,7 +61,7 @@ export default class Dashboard extends Component {
     fetch(`https://deaplearning.com/admin/app/api/get/subjects/2`)
       .then(jsonResponse => jsonResponse.json())
       .then(response => {
-        this.setState({subjects: response});
+        this.setState({subjects: response, loader: false});
       })
       .catch(error => console.log(error));
 
@@ -79,11 +86,48 @@ export default class Dashboard extends Component {
 
     return (
       <ImageBackground style={styles.container} source={Banner}>
+        {/* {loader ? ( */}
         <View
           style={{
             width: '100%',
             height: '100%',
           }}>
+          <View
+            style={{
+              width: '100%',
+              backgroundColor: 'transparent',
+              height: hp('8%'),
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <TouchableOpacity
+              style={{
+                width: 45,
+                height: 45,
+                borderRadius: 27,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onPress={() => this.props.navigation.openDrawer()}>
+              <MenuIcon name="menu" size={hp('4%')} color={appblackColor} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                width: 45,
+                height: 45,
+                borderRadius: 27,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginLeft: wp('3%'),
+              }}
+              onPress={() => this.props.navigation.navigate('Notification')}>
+              <Notification
+                name="notifications"
+                size={hp('4%')}
+                color={appblackColor}
+              />
+            </TouchableOpacity>
+          </View>
           <ScrollView style={{flex: 1}}>
             <View
               style={{
@@ -94,7 +138,6 @@ export default class Dashboard extends Component {
                 alignItems: 'center',
               }}>
               <View
-                // source={Logo}
                 style={{
                   width: 80,
                   height: 80,
@@ -180,50 +223,40 @@ export default class Dashboard extends Component {
                 }}
                 renderItem={({item}) => {
                   let title;
+                  let color_key = ['red', 'orange'];
+                  let colors;
 
                   title = item.name;
 
                   return (
                     <TouchableOpacity
-                      style={[
-                        {
-                          backgroundColor: '#fcc79c',
-                        },
-                        styles.card,
-                      ]}
+                      style={[styles.card]}
+                      // color_key[0], color_key[1]
                       onPress={() => this.props.navigation.openDrawer()}>
-                      <View style={styles.cardHeader}>
-                          {/* <LinearGradient
-                            colors={['#c775b0', '#5058a6']}
-                            start={{x: 0.2, y: 0.2}}
-                            end={{x: 0.6, y: 0.1}}
-                            style={{
-                              shadowColor: '#00000021',
-                              shadowOffset: {
-                                width: 0,
-                                height: 6,
-                              },
-                              width: "100%",
-                              alignItems: 'center',
-                              shadowOpacity: 0.37,
-                              shadowRadius: 7.49,
-                              elevation: 3,
-                              justifyContent: 'center',
-                              borderRadius: 5,
-                            }}> */}
-                    
-                            <Text style={styles.title}>{title}</Text>
-                          {/* </LinearGradient> */}
-                      </View>
-                      <View>
-                        <Image
-                          style={styles.cardImage}
-                          source={{
-                            uri: `http://deaplearning.com/admin/app/public/img/subjects/${item.thumbnail}`,
-                          }}
-                          resizeMode={'contain'}
-                        />
-                      </View>
+                      <LinearGradient
+                        // colors={[item.color_key[0], item.color_key[1]]}
+                        colors={[color_key[0], color_key[1]]}
+                        start={{x: 0.2, y: 0.2}}
+                        end={{x: 0.6, y: 0.1}}
+                        style={{
+                          flexDirection: 'row',
+                          width: '100%',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                        }}>
+                        <View style={styles.cardHeader}>
+                          <Text style={styles.title}>{title}</Text>
+                        </View>
+                        <View>
+                          <Image
+                            style={styles.cardImage}
+                            source={{
+                              uri: `http://deaplearning.com/admin/app/public/img/subjects/${item.thumbnail}`,
+                            }}
+                            resizeMode={'contain'}
+                          />
+                        </View>
+                      </LinearGradient>
                     </TouchableOpacity>
                   );
                 }}
@@ -231,6 +264,11 @@ export default class Dashboard extends Component {
             </View>
           </ScrollView>
         </View>
+        {/* ) : (
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <ActivityIndicator size="large" color="#0000ff" />
+          </View>
+        )} */}
       </ImageBackground>
     );
   }

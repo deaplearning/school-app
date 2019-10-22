@@ -92,5 +92,5 @@ export default styles = StyleSheet.create({
     fontSize: hp("1.5%")
   },
   defaultHeaderColor: { backgroundColor: "white" },
-  titleStyle: { color: "black", fontSize: 18 }
+  titleStyle: { color: "black", fontSize: 18 },
 });
