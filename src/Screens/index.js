@@ -9,6 +9,7 @@ import QuizResult from "./QuizResult";
 import AddPhoneNumber from "./AddPhoneNumber";
 import AddInfo from "./AddInfo"
 import Subject from "./SubjectTitle/SubjectScreen"; //just for demo  
+import {ChaptersTitle} from "./Chapters"
 
 // DRAWER SCREENS
 import ParentConnect from "./DrawerScreens/ParentConnect";
@@ -45,5 +46,6 @@ export const Screens = {
   EditNumber,
   AddPhoneNumber,
   AddInfo,
-  Subject
+  Subject,
+  ChaptersTitle
 };

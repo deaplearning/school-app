@@ -37,7 +37,8 @@ export const StackNav = createStackNavigator(
     SellOfferingScreen: BooksCorner.SellOfferingScreen,
     AdDetailScreen: BooksCorner.AdDetailScreen,
     ChooseImageScreen: BooksCorner.ChooseImageScreen,
-    AcademicScreen: BooksCorner.AcademicScreen
+    AcademicScreen: BooksCorner.AcademicScreen,
+    ChaptersTitle: Screens.ChaptersTitle
   },
   {
     headerMode: "none",

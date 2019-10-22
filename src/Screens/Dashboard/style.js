@@ -50,7 +50,6 @@ export default styles = StyleSheet.create({
     marginVertical: 10,
     width: "80%",
     marginHorizontal: 10,
-    borderRadius: 5,
     flexDirection: "row",
     justifyContent: "space-between",
     alignSelf: "center",

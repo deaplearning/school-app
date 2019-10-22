@@ -84,9 +84,10 @@ export default class Dashboard extends Component {
   render() {
     const {loader, weatherName, subjects} = this.state;
 
+
     return (
       <ImageBackground style={styles.container} source={Banner}>
-        {/* {loader ? ( */}
+        {!loader ? (
         <View
           style={{
             width: '100%',
@@ -104,7 +105,6 @@ export default class Dashboard extends Component {
               style={{
                 width: 45,
                 height: 45,
-                borderRadius: 27,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
@@ -222,19 +222,14 @@ export default class Dashboard extends Component {
                   return item.id;
                 }}
                 renderItem={({item}) => {
-                  let title;
-                  let color_key = ['red', 'orange'];
-                  let colors;
-
-                  title = item.name;
+                  let title = item.name;
+                  let color_key = JSON.parse(item.color_key);
 
                   return (
                     <TouchableOpacity
                       style={[styles.card]}
-                      // color_key[0], color_key[1]
-                      onPress={() => this.props.navigation.openDrawer()}>
+                      onPress={() => this.props.navigation.navigate("ChaptersTitle")}>
                       <LinearGradient
-                        // colors={[item.color_key[0], item.color_key[1]]}
                         colors={[color_key[0], color_key[1]]}
                         start={{x: 0.2, y: 0.2}}
                         end={{x: 0.6, y: 0.1}}
@@ -243,6 +238,7 @@ export default class Dashboard extends Component {
                           width: '100%',
                           alignItems: 'center',
                           justifyContent: 'space-between',
+                          borderRadius: 7,
                         }}>
                         <View style={styles.cardHeader}>
                           <Text style={styles.title}>{title}</Text>
@@ -264,11 +260,11 @@ export default class Dashboard extends Component {
             </View>
           </ScrollView>
         </View>
-        {/* ) : (
+        ) : (
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <ActivityIndicator size="large" color="#0000ff" />
           </View>
-        )} */}
+        )}
       </ImageBackground>
     );
   }
