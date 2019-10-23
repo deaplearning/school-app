@@ -17,6 +17,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {Colors} from '../../../Constant/color';
+import LinearGradient from 'react-native-linear-gradient';
 
 const {appblackColor, appFont, appColor} = Colors;
 
@@ -92,6 +93,7 @@ export default class Home extends Component {
   render() {
     return (
       <ImageBackground style={styles.container} source={Banner}>
+        {/*  NAVBAR  */}
         <View
           style={{
             width: '100%',
@@ -155,24 +157,32 @@ export default class Home extends Component {
             return item.id;
           }}
           renderItem={({item}) => {
-            console.log(item.image, 'chapter');
             return (
               <TouchableOpacity
-                style={{
-                  width: wp('40%'),
-                  height: hp('30%'),
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor: 'orange',
-                  alignSelf: 'center',
+                style={styles.card}
+                onPress={() => {
+                  this.clickEventListener(item.view);
                 }}>
-                <Image
-                  source={{
-                    uri:
-                      'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                  }}
-                  style={{width: '100%', height: '100%'}}
-                />
+                
+                  <Image style={styles.cardImage} source={{uri: item.image}} />
+
+                  <View
+                    style={{
+                      position: 'absolute',
+                      justifyContent: 'space-between',
+                      bottom: 15,
+                    }}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                  <View
+                    style={{
+                      position: 'absolute',
+                      justifyContent: 'space-between',
+                      top: 6,
+                    }}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                {/* </LinearGradient> */}
               </TouchableOpacity>
             );
           }}
