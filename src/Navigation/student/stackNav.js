@@ -9,7 +9,7 @@ import { BooksCorner } from "../../Screens/DrawerScreens/BooksCorner";
 
 export const StackNav = createStackNavigator(
   {
-    Splash: Splash,
+    Splash: Screens.Splash,
     Login: Screens.Login,
     SignUp: Screens.SignUp,
     Dashboard: Screens.Dashboard,

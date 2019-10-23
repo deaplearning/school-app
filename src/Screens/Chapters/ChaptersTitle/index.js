@@ -40,47 +40,55 @@ export default class Home extends Component {
           id: 1,
           title: 'Option 2',
           image:
-            'https://img.icons8.com/color/70/000000/administrator-male.png',
+            'https://images.pexels.com/photos/2099266/pexels-photo-2099266.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 2,
           title: 'Option 3',
-          image: 'https://img.icons8.com/color/70/000000/filled-like.png',
+          image:
+            'https://images.pexels.com/photos/51342/books-education-school-literature-51342.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 3,
           title: 'Option 4',
-          image: 'https://img.icons8.com/color/70/000000/facebook-like.png',
+          image:
+            'https://images.pexels.com/photos/2099691/pexels-photo-2099691.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 4,
           title: 'Option 5',
-          image: 'https://img.icons8.com/color/70/000000/shutdown.png',
+          image:
+            'https://images.pexels.com/photos/762687/pexels-photo-762687.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 5,
           title: 'Option 6',
-          image: 'https://img.icons8.com/color/70/000000/traffic-jam.png',
+          image:
+            'https://images.pexels.com/photos/2081327/pexels-photo-2081327.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 6,
           title: 'Option 7',
-          image: 'https://img.icons8.com/dusk/70/000000/visual-game-boy.png',
+          image:
+            'https://images.pexels.com/photos/264635/pexels-photo-264635.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 8,
           title: 'Option 8',
-          image: 'https://img.icons8.com/flat_round/70/000000/cow.png',
+          image:
+            'https://images.pexels.com/photos/2099691/pexels-photo-2099691.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 9,
           title: 'Option 9',
-          image: 'https://img.icons8.com/color/70/000000/coworking.png',
+          image:
+            'https://images.pexels.com/photos/2099266/pexels-photo-2099266.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
         {
           id: 9,
           title: 'Option 10',
-          image: 'https://img.icons8.com/nolan/70/000000/job.png',
+          image:
+            'https://images.pexels.com/photos/762687/pexels-photo-762687.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         },
       ],
     };
