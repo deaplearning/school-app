@@ -30,9 +30,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import BookMarkIcon from 'react-native-vector-icons/FontAwesome';
 import EditIcon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-picker';
+import MenuIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import NotificationIcon from 'react-native-vector-icons/MaterialIcons';
 
 // CONSTANT
-const {appColor, gray, appFont, appColor2} = Colors;
+const {appColor, gray, appFont, appColor2, appblackColor} = Colors;
 
 const leftIcon = props => {
   return (
@@ -165,10 +167,44 @@ export default class Profile extends Component {
 
     return (
       <View style={{width: '95%', alignSelf: 'center'}}>
+            <View
+            style={{
+              width: '100%',
+              backgroundColor: 'transparent',
+              height: hp('8%'),
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <TouchableOpacity
+              style={{
+                width: 45,
+                height: 45,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onPress={() => this.props.navigation.openDrawer()}>
+              <MenuIcon name="menu" size={hp('4%')} color={appblackColor} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                width: 45,
+                height: 45,
+                borderRadius: 27,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginLeft: wp('3%'),
+              }}
+              onPress={() => this.props.navigation.navigate('Notification')}>
+              <NotificationIcon
+                name="notifications"
+                size={hp('4%')}
+                color={appblackColor}
+              />
+            </TouchableOpacity>
+          </View>
         <ScrollView>
           <View
             style={{
-              marginTop: hp('15%'),
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -245,6 +281,40 @@ export default class Profile extends Component {
             </Text>
           </View>
           <View style={{justifyContent: 'space-around', height: hp('30%')}}>
+            <View
+              style={{
+                width: wp('80%'),
+                alignSelf: 'center',
+                alignItems: 'center',
+                height: hp('5%'),
+                flexDirection: 'row',
+                justifyContent: 'space-evenly',
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text style={{fontFamily: appFont, color: gray}}>Class: </Text>
+                <Text style={{fontFamily: appFont}}>9th</Text>
+              </View>
+              <View
+                style={{borderColor: gray, borderWidth: 0.5, height: hp('3%')}}
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text style={{fontFamily: appFont, color: gray}}>
+                  Section:{' '}
+                </Text>
+                <Text style={{fontFamily: appFont}}>C</Text>
+              </View>
+            </View>
+
             <LinearGradient
               colors={['#c775b0', '#5058a6']}
               start={{x: 0.2, y: 0.2}}
