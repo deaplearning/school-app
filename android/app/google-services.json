@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "617816405594-td2qlec2j30e90k5694bb0oup4d05abk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.schoolapp",
+            "certificate_hash": "32e2de52247ad04b04d1dd07180b4adf5448af77"
+          }
+        },
+        {
+          "client_id": "617816405594-9jmvdjf449jlis9m5beepn6ce4pdr06v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.schoolapp",
+            "certificate_hash": "b09d0b0c397b42e6a9c17e841387d87f69db7617"
+          }
+        },
+        {
           "client_id": "617816405594-l8m38ljbkle79i0qie4emegf2ochv9hd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

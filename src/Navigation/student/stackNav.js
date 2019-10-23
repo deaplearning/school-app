@@ -3,11 +3,13 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 // SCREENS
 import { Screens } from "../../Screens";
 import PhoneAuthTest from "../../Screens/Splash/phoneauth";
+
+import Dash from "../../Screens/AddPhoneNumber/dash"
 import { BooksCorner } from "../../Screens/DrawerScreens/BooksCorner";
 
 export const StackNav = createStackNavigator(
   {
-    Splash: Screens.Splash,
+    Splash: Splash,
     Login: Screens.Login,
     SignUp: Screens.SignUp,
     Dashboard: Screens.Dashboard,

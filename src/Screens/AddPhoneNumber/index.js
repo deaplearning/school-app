@@ -6,6 +6,7 @@ import {
   ScrollView,
   ImageBackground,
   Image,
+  Alert
 } from 'react-native';
 
 // PACKAGES
