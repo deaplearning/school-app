@@ -22,7 +22,7 @@ import Notification from 'react-native-vector-icons/MaterialIcons';
 
 // FILES
 import styles from './style';
-import Banner from '../../../assets/banners/banner2.png';
+import Banner from '../../../assets/banners/dashboardbanner.png';
 import Logo from '../../../assets/banners/logo.png';
 import {Colors} from '../../Constant/color';
 

@@ -1,6 +1,6 @@
 export const Colors = {
   appColor: '#c775b0',
-  appColor2:'#6363FF',
+  appColor2:'#5058a6',
   appblackColor: '#1a1917',
   gray: '#888888',
   grayText:'#898989',

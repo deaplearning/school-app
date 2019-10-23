@@ -34,36 +34,41 @@ export default styles = StyleSheet.create({
   },
   /******** card **************/
   card: {
-    shadowColor: "#00000021",
+    shadowColor: '#00000021',
+
     shadowOffset: {
-      width: 3
+      width: 0,
+      height: 6,
     },
-    shadowOpacity: 2,
-    shadowRadius: 8,
-    marginVertical: 7,
-    backgroundColor: "white",
-    flexBasis: "30%",
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
     elevation: 3,
-    marginHorizontal: 5,
-    borderRadius: 30,
-    width: 30
+    marginVertical: 10,
+    backgroundColor: 'transparent',
+    flexBasis: '45%',
+    marginHorizontal: 10,
+    height: hp('30%'),
+    borderRadius: 20,
+    justifyContent: "center",
+    alignSelf: "center",
+    
   },
-  cardHeader: {
-    paddingVertical: 17,
-    paddingHorizontal: 16,
-    borderTopLeftRadius: 1,
-    borderTopRightRadius: 1,
-    flexDirection: "row",
-    justifyContent: "space-between"
+  cardImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 20,
+  },
+  title: {
+    fontSize: hp("2.5%"),
+    flex: 1,
+    borderRadius: 20,
+    fontFamily: appFont,
+    color: 'white',
+    marginLeft: wp("3%")
   },
 
-  /******** card components **************/
-  title: {
-    fontSize: 16,
-    flex: 1,
-    textAlign: "center",
-    color: appColor
-  },
+ 
   fill: {
     flex: 1
   },
