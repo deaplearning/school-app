@@ -17,10 +17,6 @@ export default styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    justifyContent: 'center',
-    // alignItems: 'center',
-    zIndex: 1000,
-    zIndex: 10000,
   },
 
   contactText: {
