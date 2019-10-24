@@ -48,7 +48,7 @@ export default class CustomSidebarMenu extends Component {
       },
       {
         navOptionThumb: 'question',
-        navOptionName: 'Quizzo',
+        navOptionName: 'Quizzer',
         screenToNavigate: 'Quizzo',
       },
       {
@@ -100,7 +100,7 @@ export default class CustomSidebarMenu extends Component {
             start={{x: 0.2, y: 0.2}}
             end={{x: 0.6, y: 0.1}}
             style={{
-              height: hp("20%"),
+              height: hp('20%'),
               width: Dimensions.get('window').width - 80,
               alignItems: 'center',
               justifyContent: 'center',
@@ -225,7 +225,8 @@ export default class CustomSidebarMenu extends Component {
                   borderRadius: 20,
                   backgroundColor: '#F1F1F1',
                   justifyContent: 'center',
-                }}>
+                }}
+                onPress={() => this.props.navigation.navigate('Setting')}>
                 <SettingIcon
                   name="settings"
                   size={wp('6%')}

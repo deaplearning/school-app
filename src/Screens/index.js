@@ -23,6 +23,7 @@ import EditProfile from "./DrawerScreens/Profile/editProfile";
 import EditNumber from "./DrawerScreens/Profile/editNumber";
 import Thumbnail from "./SubjectTitle/Thumbnail";
 import Videos from "./SubjectTitle/Videos";
+import Setting from "./DrawerScreens/Setting"
 
 export const Screens = {
   Login,
@@ -47,5 +48,6 @@ export const Screens = {
   AddPhoneNumber,
   AddInfo,
   Subject,
-  ChaptersTitle
+  ChaptersTitle,
+  Setting
 };

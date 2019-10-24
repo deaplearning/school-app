@@ -40,7 +40,8 @@ export const StackNav = createStackNavigator(
     AdDetailScreen: BooksCorner.AdDetailScreen,
     ChooseImageScreen: BooksCorner.ChooseImageScreen,
     AcademicScreen: BooksCorner.AcademicScreen,
-    ChaptersTitle: Screens.ChaptersTitle
+    ChaptersTitle: Screens.ChaptersTitle,
+    Setting: Screens.Setting
   },
   {
     headerMode: "none",
